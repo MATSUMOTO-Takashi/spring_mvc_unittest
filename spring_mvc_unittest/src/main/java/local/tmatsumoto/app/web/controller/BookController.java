@@ -25,8 +25,8 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
-	public String search(SearchForm searhForm, BindingResult result, Model model) {
-		Book book = bookService.findById(searhForm.getId());
+	public String search(SearchForm searchForm, BindingResult result, Model model) {
+		Book book = bookService.findById(searchForm.getId());
 		model.addAttribute("book", book);
 		return "searchResult";
 	}

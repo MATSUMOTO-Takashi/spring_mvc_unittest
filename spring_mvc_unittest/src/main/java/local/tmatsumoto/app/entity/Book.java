@@ -5,6 +5,7 @@ public class Book {
 	private String id;
 	private String name;
 	private String author;
+	private Integer targetAge;
 	
 	public String getId() {
 		return id;
@@ -23,6 +24,20 @@ public class Book {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public Integer getTargetAge() {
+		return targetAge;
+	}
+	public void setTargetAge(Integer targetAge) {
+		this.targetAge = targetAge;
+	}
+	
+	/**
+	 * この書籍の対象年齢が18歳以上の場合trueを返します。
+	 * @return {@link #getTargetAge()} {@code >= 18}の場合true
+	 */
+	public boolean isR18() {
+		return targetAge != null && targetAge >= 18;
 	}
 	
 }
