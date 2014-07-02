@@ -1,6 +1,5 @@
 package local.tmatsumoto.app.entity;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class User {
@@ -36,5 +35,19 @@ public class User {
 	public int getAge() {
 		// TODO: 誕生日から年齢を計算するロジックを実装する
 		return 0;
+	}
+
+	/**
+	 * 指定された書籍を読める場合trueを返します。
+	 * 
+	 * @param book 書籍
+	 * @return 読める場合true
+	 */
+	public boolean canRead(Book book) {
+		if (book.isR18()) {
+			return getAge() >= 18;
+		} else {
+			return true;
+		}
 	}
 }

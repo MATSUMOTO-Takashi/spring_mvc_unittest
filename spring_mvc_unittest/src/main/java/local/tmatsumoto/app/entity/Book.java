@@ -48,18 +48,4 @@ public class Book {
 		return targetAge != null && targetAge >= 18;
 	}
 
-	/**
-	 * 指定されたユーザがこの書籍を読める場合trueを返します。
-	 * 
-	 * @param user ユーザ
-	 * @return 読める場合true
-	 */
-	public boolean canRead(User user) {
-		if (isR18()) {
-			return user.getAge() >= 18;
-		} else {
-			return true;
-		}
-	}
-
 }
