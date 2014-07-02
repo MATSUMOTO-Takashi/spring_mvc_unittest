@@ -1,14 +1,14 @@
 package local.tmatsumoto.app.entity;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
+import static org.hamcrest.number.OrderingComparison.lessThan;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.internal.util.reflection.Whitebox;
-import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
 public class BookTest {
 	
 	private Book book = new Book();
@@ -16,25 +16,25 @@ public class BookTest {
 	@Test
 	public void isR18はgetTargetAgeがnullならfalseを返す() {
 		Whitebox.setInternalState(book, "targetAge", null);
-		boolean res = book.isR18();
 		
-		assertThat(res, is(false));
+		assertThat(book.getTargetAge(), is(nullValue()));
+		assertThat(book.isR18(), is(false));
 	}
 	
 	@Test
 	public void isR18はgetTargetAgeが18未満ならfalseを返す() {
 		Whitebox.setInternalState(book, "targetAge", 17);
-		boolean res = book.isR18();
 		
-		assertThat(res, is(false));
+		assertThat(book.getTargetAge(), is(lessThan(18)));
+		assertThat(book.isR18(), is(false));
 	}
 	
 	@Test
 	public void isR18はgetTargetAgeが18以上ならtrueを返す() {
 		Whitebox.setInternalState(book, "targetAge", 18);
-		boolean res = book.isR18();
 		
-		assertThat(res, is(true));
+		assertThat(book.getTargetAge(), is(greaterThanOrEqualTo(18)));
+		assertThat(book.isR18(), is(true));
 	}
 
 }
